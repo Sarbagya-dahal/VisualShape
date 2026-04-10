@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Orbital Ring Animations
+   Three concentric rings spinning at different speeds + directions
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes orbitSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitMedium {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes orbitFast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-orbit-slow {
+  animation: orbitSlow 12s linear infinite;
+}
+
+.animate-orbit-medium {
+  animation: orbitMedium 8s linear infinite;
+}
+
+.animate-orbit-fast {
+  animation: orbitFast 4s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Sound Wave Bar Animation
+   5 bars that bounce at staggered intervals 
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes soundBar {
+  0%, 100% { height: 4px; }
+  25% { height: 20px; }
+  50% { height: 8px; }
+  75% { height: 28px; }
+}
+
+.animate-sound-bar {
+  animation: soundBar 1.2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Floating Particle Animation
+   Gentle float up + fade in/out
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+    transform: translateY(-10px) translateX(5px) scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateY(-40px) translateX(-8px) scale(0.8);
+  }
+  85% {
+    opacity: 0.5;
+    transform: translateY(-60px) translateX(3px) scale(1.1);
+  }
+  100% {
+    transform: translateY(-80px) translateX(0) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-float-particle {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Breathing / Ping Animations (for the active mic button)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes pingSlower {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 2s ease-out infinite;
+}
+
+.animate-ping-slower {
+  animation: pingSlower 3s ease-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Skeleton Shimmer (for loading states)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Fade-In-Up (for transcript bubbles, cards)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggered card entry */
+.card-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Pulse Glow (voice indicator)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(250, 204, 21, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(250, 204, 21, 0.7); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Custom Scrollbar
+   ═══════════════════════════════════════════════════════════════════ */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(250, 204, 21, 0.3);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(250, 204, 21, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Focus Ring (Accessibility — high contrast for keyboard users)
+   ═══════════════════════════════════════════════════════════════════ */
+.focus-ring:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Mic Breathing Animation (legacy — kept for ShoppingView)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.mic-breathing::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px solid #facc15;
+  animation: breathe 2s ease-in-out infinite;
+}

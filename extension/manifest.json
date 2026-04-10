@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "VisualShape Accessibility Assistant",
+  "version": "3.0",
+  "description": "Omnipresent voice-controlled accessibility layer for visually impaired users.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": ["youtube.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://*.amazon.in/*",
+        "*://*.amazon.com/*",
+        "*://*.bigbasket.com/*",
+        "*://*.flipkart.com/*",
+        "*://*.blinkit.com/*",
+        "*://*.zepto.co/*",
+        "*://*.myntra.com/*",
+        "*://*.jiomart.com/*",
+        "*://*.meesho.com/*",
+        "*://*.justdial.com/*",
+        "*://*.urbancompany.com/*",
+        "*://*.urbanclap.com/*"
+      ],
+      "js": ["ecommerce.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://localhost:*/*",
+        "http://127.0.0.1:*/*"
+      ],
+      "js": ["relay.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:*/*",
+      "http://127.0.0.1:*/*"
+    ]
+  },
+  "action": {
+    "default_title": "VisualShape Accessibility"
+  }
+}
