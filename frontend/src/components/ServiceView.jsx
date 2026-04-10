@@ -273,8 +273,9 @@ const ServiceView = ({ onBack }) => {
     await speak(`Searching for ${trimmedQuery} services`);
 
     try {
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       const response = await fetch(
-        `http://localhost:3000/api/search/service/${encodeURIComponent(trimmedQuery)}`
+        `${API_BASE}/api/search/service/${encodeURIComponent(trimmedQuery)}`
       );
       const data = await response.json();
 
