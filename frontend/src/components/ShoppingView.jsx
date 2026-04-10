@@ -327,9 +327,8 @@ const ShoppingView = ({ searchType = 'shopping', onBack }) => {
 
     try {
       const type = searchType === 'food' ? 'food' : 'shopping';
-      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       const response = await fetch(
-        `${API_BASE}/api/search/${type}/${encodeURIComponent(trimmedQuery)}`
+        `http://localhost:3000/api/search/${type}/${encodeURIComponent(trimmedQuery)}`
       );
       const data = await response.json();
 
