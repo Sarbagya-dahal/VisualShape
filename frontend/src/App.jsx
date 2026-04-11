@@ -50,6 +50,9 @@ function App() {
             <p className="text-[11px] text-gray-800 tracking-wider">
               Built for accessibility · Speak naturally · Chrome Extension Enhanced
             </p>
+            <p className="mt-2 text-xs text-gray-500 tracking-wide font-medium">
+              Made By: Sarbagya Dahal (24BCE2932)
+            </p>
           </footer>
         </div>
       )}
